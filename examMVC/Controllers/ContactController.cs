@@ -47,6 +47,18 @@ namespace examMVC.Controllers
             }
             return View(viewModel);
         }
+
+        async public Task<IActionResult> SortByName()
+        {
+            var model = _context.Contacts.OrderByDescending(c => c.ContactName).ToList<Contact>();
+            return RedirectToAction("Index", model);
+        }
+
+        async public Task<IActionResult> Search(string data)
+        {
+            var model = _context.Contacts.FirstOrDefaultAsync(m => m.ContactName == data);
+            return RedirectToAction("Index", model);
+        }
     }
 }
 

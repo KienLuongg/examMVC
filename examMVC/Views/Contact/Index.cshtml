@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             @foreach (var item in Model)
-                {
+            {
                 <tr>
                     <td>@item.ContactName</td>
                     <td>@item.ContactNumber</td>
@@ -24,7 +24,18 @@
                     <td>@item.HireDate</td>
                     <td>@item.Birthday</td>
                 </tr>
-                }
+            }
         </tbody>
     </table>
+    <button type="button" class="btn btn-primary" asp-controller="Contact" asp-action="SortByName">SortByName</button>
+
+    @using (Html.BeginForm("Search", "Contact", FormMethod.Post))
+    {
+        <div class="mb-3">
+            <input type="text" name="search" class="form-control" placeholder="search...">
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    }
 </div>
