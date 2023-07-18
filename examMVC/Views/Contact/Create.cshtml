@@ -1,4 +1,35 @@
 ﻿@page
-@{
-}
+@model examMVC.Models.ContactViewModel
+@{}
+@using (Html.BeginForm("Create", "Contact", FormMethod.Post))
+{
+    <div class="mb-3">
+        @Html.LabelFor(m => m.ContactName)
+        @Html.TextBoxFor(m => m.ContactName)
+        @Html.ValidationMessageFor(m => m.ContactName)
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.ContactNumber)
+        @Html.TextBoxFor(m => m.ContactNumber)
+        @Html.ValidationMessageFor(m => m.ContactNumber)
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.GroupName)
+        @Html.TextBoxFor(m => m.GroupName)
+        @Html.ValidationMessageFor(m => m.GroupName)
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.HireDate)
+        @Html.TextBoxFor(m => m.HireDate)
+        @Html.ValidationMessageFor(m => m.HireDate)
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Birthday)
+        @Html.TextBoxFor(m => m.Birthday)
+        @Html.ValidationMessageFor(m => m.Birthday)
+    </div>
 
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+}

@@ -1,4 +1,5 @@
 ﻿using System;
+using examMVC.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,6 +30,22 @@ namespace examMVC.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(ContactViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Contacts.Add(new Contact { ContactName = viewModel.ContactName });
+                _context.Contacts.Add(new Contact { ContactNumber = viewModel.ContactNumber });
+                _context.Contacts.Add(new Contact { GroupName = viewModel.GroupName });
+                _context.Contacts.Add(new Contact { HireDate = viewModel.HireDate });
+                _context.Contacts.Add(new Contact { Birthday = viewModel.Birthday });
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(viewModel);
         }
     }
 }
