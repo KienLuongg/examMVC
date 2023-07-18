@@ -1,0 +1,30 @@
+﻿@model List<examMVC.Entities.Contact>
+@{
+    ViewData["Title"] = "Contact Page";
+
+}
+<h1>Contact Page</h1>
+<a asp-controller="Contact" asp-action="Create">Create new contact</a>
+<div class="col-6">
+    <table class="table">
+        <thead>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Group Name</th>
+        <th>Hire Date</th>
+        <th>Birthday</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.ContactName</td>
+                    <td>@item.ContactNumber</td>
+                    <td>@item.GroupName</td>
+                    <td>@item.HireDate</td>
+                    <td>@item.Birthday</td>
+                </tr>
+                }
+        </tbody>
+    </table>
+</div>
